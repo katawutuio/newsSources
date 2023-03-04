@@ -39,6 +39,6 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomViewHolder> {
 
     @Override
     public int getItemCount() {
-        return 0;
+        return headlines.size();
     }
 }
