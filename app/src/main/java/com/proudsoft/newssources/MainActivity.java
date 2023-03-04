@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // load progress dialog when app fetching data
         dialog = new ProgressDialog(this);
         dialog.setTitle("Fetching news articles...");
         dialog.show();
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onFetchData(List<NewsHeadlines> list, String message) {
             showNews(list);
-            dialog.dismiss();
+            dialog.dismiss(); // when app finished fetch data, close the progress dialog
         }
 
         @Override
