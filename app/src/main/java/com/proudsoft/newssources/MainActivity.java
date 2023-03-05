@@ -1,6 +1,7 @@
 package com.proudsoft.newssources;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,11 +22,29 @@ public class MainActivity extends AppCompatActivity implements SelectListener, V
     CustomAdapter adapter;
     ProgressDialog dialog;
     Button b1,b2,b3,b4,b5,b6,b7;
+    SearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        searchView = findViewById(R.id.search_view);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                dialog.setTitle("Fetching news article of " + query);
+                dialog.show();
+                RequestManager manager = new RequestManager(MainActivity.this);
+                manager.getNewsHeadlines(listener, "general", query);
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
 
         // load progress dialog when app fetching data
         dialog = new ProgressDialog(this);
