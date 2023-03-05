@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.proudsoft.newssources.Models.NewsApiResponse;
 import com.proudsoft.newssources.Models.NewsHeadlines;
@@ -79,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements SelectListener, V
 
         @Override
         public void onError(String message) {
-
+            Toast.makeText(MainActivity.this, "An Error Occured!!", Toast.LENGTH_SHORT).show();
         }
     };
 
