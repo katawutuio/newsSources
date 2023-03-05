@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">News sources</string>
+    <string name="api_key">{{ENTER APIKEY HERE}}</string>
+</resources>
